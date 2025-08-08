@@ -1,0 +1,341 @@
+/**
+ * 🎨 REFINED NEUMORPHIC LOGGING DASHBOARD THEME
+ * 
+ * Based on Nigel's beautiful neumorphic login design
+ * - Clean light neumorphic base with refined shadows
+ * - Elegant typography with perfect contrast
+ * - Surgical precision button and input styling
+ * - Cozy selection colors and smooth interactions
+ */
+
+/* Refined Neumorphic Colors & Size Constants */
+:root {
+  --neuro-base: #e0e5ec;
+  --neuro-base-light: #f0f3f8;
+  --neuro-base-dark: #d0d5dc;
+  --neuro-text: #4a5568;
+  --neuro-text-soft: #6b7280;
+  --neuro-text-muted: #9ca3af;
+  --neuro-shadow-dark: #a3b1c6;
+  --neuro-shadow-light: #ffffff;
+  --neuro-accent: #667eea;
+  --neuro-success: #10b981;
+  --neuro-warning: #f59e0b;
+  --neuro-error: #ef4444;
+  --neuro-cozy-selection: #bfc7d4;
+  --neuro-glass: rgba(224, 229, 236, 0.8);
+  --neuro-glass-border: rgba(163, 177, 198, 0.3);
+  
+  /* SIZE CONSTANTS */
+  --neuro-card-width: 400px;
+  --neuro-card-min-width: 400px;
+  --neuro-card-height: 140px;
+  --neuro-grid-gap: 20px;
+}
+
+/* Global Refined Neumorphic Theme */
+html, body {
+  background: var(--neuro-base);
+  color: var(--neuro-text);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-weight: 500;
+  min-height: 100vh;
+}
+
+/* Cozy Text Selection */
+::selection {
+  background: var(--neuro-cozy-selection);
+  color: var(--neuro-text);
+}
+
+::-moz-selection {
+  background: var(--neuro-cozy-selection);
+  color: var(--neuro-text);
+}
+
+/* Refined Neumorphic Base Classes - Following Nigel's Style */
+.neuro-card {
+  background: var(--neuro-base);
+  border-radius: 20px;
+  box-shadow: 10px 10px 20px var(--neuro-shadow-dark), -10px -10px 20px var(--neuro-shadow-light);
+  border: none;
+  transition: all 0.3s ease;
+  width: var(--neuro-card-width) !important;
+  min-width: var(--neuro-card-min-width) !important;
+  height: var(--neuro-card-height) !important;
+}
+
+.neuro-card:hover {
+  box-shadow: 12px 12px 24px var(--neuro-shadow-dark), -12px -12px 24px var(--neuro-shadow-light);
+  transform: translateY(-1px);
+}
+
+.neuro-inset {
+  background: var(--neuro-base);
+  border-radius: 16px;
+  box-shadow: 4px 4px 8px var(--neuro-shadow-dark), -4px -4px 8px var(--neuro-shadow-light);
+  border: none;
+}
+
+.neuro-subtle {
+  background: var(--neuro-base);
+  border-radius: 12px;
+  box-shadow: 6px 6px 12px var(--neuro-shadow-dark), -6px -6px 12px var(--neuro-shadow-light);
+  border: none;
+  transition: all 0.2s ease;
+}
+
+.neuro-subtle:hover {
+  box-shadow: 8px 8px 16px var(--neuro-shadow-dark), -8px -8px 16px var(--neuro-shadow-light);
+  transform: translateY(-0.5px);
+}
+
+/* Refined Toggle Buttons - Nigel's Style */
+.neuro-toggle {
+  background: var(--neuro-base);
+  border: none;
+  border-radius: 16px;
+  padding: 10px 20px;
+  color: var(--neuro-text);
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 6px 6px 12px var(--neuro-shadow-dark), -6px -6px 12px var(--neuro-shadow-light);
+  margin: 4px;
+  min-width: 70px;
+}
+
+.neuro-toggle:hover {
+  box-shadow: 8px 8px 16px var(--neuro-shadow-dark), -8px -8px 16px var(--neuro-shadow-light);
+  transform: translateY(-1px);
+}
+
+.neuro-toggle:active,
+.neuro-toggle.active {
+  box-shadow: inset 4px 4px 8px var(--neuro-shadow-dark), inset -4px -4px 8px var(--neuro-shadow-light);
+  transform: translateY(1px);
+  color: var(--neuro-accent);
+}
+
+/* Big Blocky Panel Toggle Switches */
+.neuro-panel-switch {
+  background: var(--neuro-base);
+  border: none;
+  border-radius: 20px;
+  padding: 16px 32px;
+  color: var(--neuro-text);
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 12px 12px 24px var(--neuro-shadow-dark), -12px -12px 24px var(--neuro-shadow-light);
+  margin: 8px;
+  min-width: 120px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.neuro-panel-switch:hover {
+  box-shadow: 16px 16px 32px var(--neuro-shadow-dark), -16px -16px 32px var(--neuro-shadow-light);
+  transform: translateY(-2px);
+}
+
+.neuro-panel-switch:active,
+.neuro-panel-switch.active {
+  box-shadow: inset 8px 8px 16px var(--neuro-shadow-dark), inset -8px -8px 16px var(--neuro-shadow-light);
+  transform: translateY(2px);
+  color: var(--neuro-accent);
+}
+
+/* Log Text Styles - Configurable */
+.neuro-log-text {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: var(--log-font-size, 12px);
+  line-height: var(--log-line-height, 1.4);
+  color: var(--neuro-text);
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+/* Enhanced Button Styling */
+.neuro-toggle {
+  border-radius: var(--button-border-radius, 16px) !important;
+  padding: var(--button-padding, 10px) var(--button-padding, 20px) !important;
+  font-size: var(--button-font-size, 13px) !important;
+  font-weight: var(--button-font-weight, 600) !important;
+  transition: all var(--hover-transition, 300ms) ease !important;
+}
+
+.neuro-toggle:hover {
+  transform: var(--hover-transform, translateY(-1px)) !important;
+}
+
+/* Log Entry Enhanced Styling */
+.log-entry:hover {
+  background: var(--log-entry-hover-bg, transparent) !important;
+  transform: var(--hover-transform, none) !important;
+}
+
+/* Log Entry Spacing */
+.log-entry {
+  margin-bottom: var(--log-spacing, 4px);
+  max-width: var(--log-max-length, 150ch);
+  word-wrap: var(--log-word-wrap, break-word);
+}
+
+.neuro-log-text.soft {
+  color: var(--neuro-text-soft);
+  font-weight: 400;
+}
+
+.neuro-log-text.defined {
+  color: var(--neuro-text);
+  font-weight: 600;
+}
+
+/* Log Level Colors */
+.neuro-log-error {
+  color: var(--neuro-error);
+  font-weight: 600;
+}
+
+.neuro-log-warning {
+  color: var(--neuro-warning);
+  font-weight: 600;
+}
+
+.neuro-log-success {
+  color: var(--neuro-success);
+  font-weight: 600;
+}
+
+.neuro-log-info {
+  color: var(--neuro-accent);
+  font-weight: 500;
+}
+
+/* Refined Input Fields - Smooth Surface Style */
+.neuro-input {
+  background: var(--neuro-base);
+  border: none;
+  outline: none;
+  border-radius: 16px;
+  padding: 14px 20px;
+  color: var(--neuro-text);
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: 4px 4px 8px var(--neuro-shadow-dark), -4px -4px 8px var(--neuro-shadow-light);
+  transition: all 0.3s ease;
+}
+
+.neuro-input::placeholder {
+  color: var(--neuro-text-muted);
+  font-weight: 400;
+}
+
+.neuro-input:focus {
+  box-shadow: 6px 6px 12px var(--neuro-shadow-dark), -6px -6px 12px var(--neuro-shadow-light);
+  color: var(--neuro-accent);
+  transform: translateY(-1px);
+}
+
+/* Layout Helpers */
+.neuro-grid {
+  display: grid;
+  gap: var(--neuro-grid-gap);
+  padding: 20px;
+}
+
+.neuro-flex {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.neuro-flex-wrap {
+  flex-wrap: wrap;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .neuro-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  
+  .neuro-panel-wide {
+    grid-column: span 2 !important;
+  }
+  
+  .neuro-panel-medium {
+    grid-column: span 1 !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .neuro-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px;
+  }
+  
+  .neuro-panel-wide,
+  .neuro-panel-medium,
+  .neuro-panel-small {
+    grid-column: span 1 !important;
+  }
+  
+  .neuro-panel-switch {
+    padding: 12px 20px;
+    font-size: 14px;
+    min-width: 100px;
+  }
+  
+  .neuro-toggle {
+    padding: 8px 12px;
+    font-size: 11px;
+    min-width: 50px;
+  }
+  
+  .neuro-card {
+    border-radius: 16px;
+  }
+  
+  .neuro-log-text {
+    font-size: 12px;
+  }
+}
+
+/* Animation Classes */
+.neuro-pulse {
+  animation: neuro-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes neuro-pulse {
+  0%, 100% {
+    box-shadow: 10px 10px 20px var(--neuro-shadow-dark), -10px -10px 20px var(--neuro-shadow-light);
+  }
+  50% {
+    box-shadow: 15px 15px 30px var(--neuro-shadow-dark), -15px -15px 30px var(--neuro-shadow-light);
+  }
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--neuro-base);
+  border-radius: 6px;
+  box-shadow: inset 2px 2px 4px var(--neuro-shadow-dark), inset -2px -2px 4px var(--neuro-shadow-light);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--neuro-base);
+  border-radius: 6px;
+  box-shadow: 2px 2px 4px var(--neuro-shadow-dark), -2px -2px 4px var(--neuro-shadow-light);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  box-shadow: 4px 4px 8px var(--neuro-shadow-dark), -4px -4px 8px var(--neuro-shadow-light);
+}
