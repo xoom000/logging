@@ -26,7 +26,7 @@
     "@types/uuid": "^9.0.2"
   },
   "scripts": {
-    "start": "BROWSER=none PORT=7720 react-scripts start",
+    "start": "BROWSER=none PORT=7720 DANGEROUSLY_DISABLE_HOST_CHECK=true react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
