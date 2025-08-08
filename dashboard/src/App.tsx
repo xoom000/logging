@@ -12,7 +12,6 @@ import LogGrid from './components/LogGrid';
 import DashboardHeader from './components/DashboardHeader';
 import ConnectionStatus from './components/ConnectionStatus';
 import { SettingsModal } from './components/SettingsModalSimple';
-import { DesignSystemEasel } from './components/DesignSystemEasel';
 import { useLogSocket } from './hooks/useLogSocket';
 import { LogEntry, DashboardStats } from './types/LogTypes';
 import { SettingsProvider, useSettings } from './contexts/SettingsContext';
@@ -23,7 +22,6 @@ const DashboardApp: React.FC = () => {
   const [stats, setStats] = useState<DashboardStats | null>(null);
   const [logs, setLogs] = useState<LogEntry[]>([]);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
-  const [isEaselOpen, setIsEaselOpen] = useState(false);
   const { settings } = useSettings();
   
   // Initialize WebSocket connection
@@ -56,11 +54,12 @@ const DashboardApp: React.FC = () => {
         <button onClick={() => setIsSettingsOpen(true)} className="neuro-toggle">
           ⚙️ Dashboard Settings
         </button>
-        <button onClick={() => {
-          console.log('Design System Easel button clicked!');
-          setIsEaselOpen(true);
-        }} className="neuro-toggle">
-          🎨 Design System Easel
+        <button 
+          onClick={() => window.open('/design-system', '_blank')} 
+          className="neuro-toggle"
+          style={{ opacity: 0.7 }}
+        >
+          🎨 Design Tools
         </button>
       </div>
 
@@ -74,19 +73,11 @@ const DashboardApp: React.FC = () => {
           debugBorders={settings.debug.showBorders ? settings.debug.borderSettings : undefined}
         />
         
-        {/* Modals */}
+        {/* Settings Modal */}
         <SettingsModal 
           isOpen={isSettingsOpen} 
           onClose={() => setIsSettingsOpen(false)} 
         />
-        <DesignSystemEasel 
-          isOpen={isEaselOpen} 
-          onClose={() => {
-            console.log('Closing Design System Easel');
-            setIsEaselOpen(false);
-          }} 
-        />
-        {isEaselOpen && <div style={{position: 'fixed', top: 0, left: 0, background: 'red', color: 'white', zIndex: 9999, padding: '10px'}}>EASEL IS OPEN</div>}
         
         {/* Footer Stats - Refined Neumorphic Style */}
         <footer className="neuro-card" style={{ padding: '30px', marginTop: '30px' }}>
