@@ -55,6 +55,53 @@ const DashboardApp: React.FC = () => {
           ⚙️ Dashboard Settings
         </button>
         <button 
+          onClick={() => {
+            // Dump all visible log data to clipboard
+            const logData = {
+              timestamp: new Date().toISOString(),
+              connectionStatus: connectionStatus,
+              isConnected: isConnected,
+              totalLogs: totalLogs,
+              logsArray: logs,
+              logsCount: logs.length,
+              statsData: stats
+            };
+            
+            const dumpText = `🔍 LOG DUMP - ${new Date().toLocaleString()}
+════════════════════════════════════════════════════════════════════════════
+
+📊 CONNECTION STATUS:
+- Status: ${connectionStatus}
+- Connected: ${isConnected}
+- Total Logs: ${totalLogs}
+
+📋 LOGS ARRAY (Length: ${logs.length}):
+${logs.length === 0 ? '❌ NO LOGS FOUND IN CLIENT' : logs.map((log, index) => 
+`${index + 1}. [${log.timestamp}] ${log.level} - ${log.message} (Source: ${log.source})`
+).join('\n')}
+
+📈 STATS DATA:
+${stats ? JSON.stringify(stats, null, 2) : '❌ NO STATS DATA'}
+
+🔗 RAW LOG OBJECT:
+${JSON.stringify(logData, null, 2)}
+
+════════════════════════════════════════════════════════════════════════════`;
+
+            navigator.clipboard.writeText(dumpText).then(() => {
+              alert(`📋 LOG DUMP COPIED TO CLIPBOARD!\n\nFound ${logs.length} logs in client\nConnection: ${isConnected ? 'Connected' : 'Disconnected'}`);
+            }).catch(() => {
+              // Fallback - show in alert if clipboard fails
+              alert('Clipboard failed - showing in console');
+              console.log('LOG DUMP:', dumpText);
+            });
+          }} 
+          className="neuro-toggle"
+          style={{ background: '#ff6b6b', color: 'white', fontWeight: 'bold' }}
+        >
+          📋 LOG DUMP
+        </button>
+        <button 
           onClick={() => window.open('/design-system', '_blank')} 
           className="neuro-toggle"
           style={{ opacity: 0.7 }}
